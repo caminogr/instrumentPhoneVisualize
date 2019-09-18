@@ -2,18 +2,28 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofBackground(0);
+    
+    // font
+    ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
+    fontSettings.addRanges(ofAlphabet::Japanese);
+    ttf.load(fontSettings);
+
+    // osc
     ofLog() << "listening for osc messages on port " << PORT;
     receiver.setup(PORT);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    ofSetColor(255);
+    
+    char t[] = u8"\u3042";
+    ttf.drawString(t, 100, 110);
 }
 
 //--------------------------------------------------------------

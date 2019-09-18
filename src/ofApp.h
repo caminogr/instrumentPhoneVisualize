@@ -25,4 +25,5 @@ public:
   void gotMessage(ofMessage msg);
 
   ofxOscReceiver receiver;
+  ofTrueTypeFont ttf;
 };

@@ -6,10 +6,12 @@ void ofApp::setup(){
     ofBackground(0);
 
     // ofVec2f
-    pos.x = ofGetWidth()/2;
-    pos.y = ofGetHeight()/2;
-    vel.x = ofRandom(-10, 10);
-    vel.y = ofRandom(-10, 10);
+    for (int i=0; i<NUM; i++) {
+      pos[i].x = ofGetWidth()/2;
+      pos[i].y = ofGetHeight()/2;
+      vel[i].x = ofRandom(-10, 10);
+      vel[i].y = ofRandom(-10, 10);
+    }
      
     // font
     ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
@@ -23,11 +25,13 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  pos += vel;
-  if (pos.x > ofGetWidth()) {pos.x = 0;}
-  if (pos.x < 0) {pos.x = ofGetWidth();}
-  if (pos.y > ofGetHeight()) {pos.y = 0;}
-  if (pos.y < 0) {pos.y = ofGetHeight();}
+  for (int i=0; i<NUM; i++) {
+    pos[i] += vel[i];
+    if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
+    if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
+    if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
+    if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
+  }
 }
 
 //--------------------------------------------------------------
@@ -35,7 +39,10 @@ void ofApp::draw(){
     ofSetColor(255);
     
     char t[] = u8"\u3042";
-    ttf.drawString(t, pos.x, pos.y);
+    for (int i=0; i<NUM; i++) {
+        
+      ttf.drawString(t, pos[i].x, pos[i].y);
+    }
 }
 
 //--------------------------------------------------------------

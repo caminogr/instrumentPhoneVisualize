@@ -4,6 +4,7 @@
 #include "ofxOsc.h"
 
 #define PORT 8000
+#define NUM 40
 
 class ofApp : public ofBaseApp {
 
@@ -26,6 +27,6 @@ public:
 
   ofxOscReceiver receiver;
   ofTrueTypeFont ttf;
-  ofVec2f pos;
-  ofVec2f vel;
+  ofVec2f pos[NUM];
+  ofVec2f vel[NUM];
 };

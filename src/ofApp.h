@@ -26,4 +26,6 @@ public:
 
   ofxOscReceiver receiver;
   ofTrueTypeFont ttf;
+  ofVec2f pos;
+  ofVec2f vel;
 };

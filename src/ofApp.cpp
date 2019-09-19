@@ -2,8 +2,15 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetFrameRate(60);
     ofBackground(0);
-    
+
+    // ofVec2f
+    pos.x = ofGetWidth()/2;
+    pos.y = ofGetHeight()/2;
+    vel.x = ofRandom(-10, 10);
+    vel.y = ofRandom(-10, 10);
+     
     // font
     ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
     fontSettings.addRanges(ofAlphabet::Japanese);
@@ -16,6 +23,11 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+  pos += vel;
+  if (pos.x > ofGetWidth()) {pos.x = 0;}
+  if (pos.x < 0) {pos.x = ofGetWidth();}
+  if (pos.y > ofGetHeight()) {pos.y = 0;}
+  if (pos.y < 0) {pos.y = ofGetHeight();}
 }
 
 //--------------------------------------------------------------
@@ -23,7 +35,7 @@ void ofApp::draw(){
     ofSetColor(255);
     
     char t[] = u8"\u3042";
-    ttf.drawString(t, 100, 110);
+    ttf.drawString(t, pos.x, pos.y);
 }
 
 //--------------------------------------------------------------

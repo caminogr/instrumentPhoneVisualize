@@ -4,15 +4,7 @@
 void ofApp::setup(){
     ofSetFrameRate(60);
     ofBackground(0);
-
-    // ofVec2f
-    for (int i=0; i<NUM; i++) {
-      pos[i].x = ofGetWidth()/2;
-      pos[i].y = ofGetHeight()/2;
-      vel[i].x = ofRandom(-10, 10);
-      vel[i].y = ofRandom(-10, 10);
-    }
-     
+    
     // font
     ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
     fontSettings.addRanges(ofAlphabet::Japanese);
@@ -25,7 +17,7 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  for (int i=0; i<NUM; i++) {
+  for (int i=0; i<pos.size(); i++) {
     pos[i] += vel[i];
     if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
     if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
@@ -39,15 +31,21 @@ void ofApp::draw(){
     ofSetColor(255);
     
     char t[] = u8"\u3042";
-    for (int i=0; i<NUM; i++) {
-        
-      ttf.drawString(t, pos[i].x, pos[i].y);
+    for (int i=0; i<pos.size(); i++) {
+        ttf.drawString(t, pos[i].x, pos[i].y);
     }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+    
+    ofVec2f p;
+    p.set(ofGetWidth()/2, ofGetHeight()/2);
+    pos.push_back(p);
+    
+    ofVec2f v;
+    v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+    vel.push_back(v);
 }
 
 //--------------------------------------------------------------

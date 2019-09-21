@@ -27,6 +27,6 @@ public:
 
   ofxOscReceiver receiver;
   ofTrueTypeFont ttf;
-  ofVec2f pos[NUM];
-  ofVec2f vel[NUM];
+  vector<ofVec2f> pos;
+  vector<ofVec2f> vel;
 };

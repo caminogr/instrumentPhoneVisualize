@@ -17,12 +17,23 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  for (int i=0; i<pos.size(); i++) {
-    pos[i] += vel[i];
-    if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
-    if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
-    if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
-    if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
+
+  for (int i = this->lifeSpan.size() - 1; i >= 0; i--) {
+
+    this->lifeSpan[i] -= 1;
+    if (lifeSpan[i] == 0) {
+      this->lifeSpan.erase(this->lifeSpan.begin() + i);
+      this->pos.erase(this->pos.begin() + i);
+      this->vel.erase(this->vel.begin() + i);
+    }
+
+    for (int i=0; i<pos.size(); i++) {
+      pos[i] += vel[i];
+      if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
+      if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
+      if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
+      if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
+    }
   }
 }
 
@@ -44,8 +55,10 @@ void ofApp::keyPressed(int key){
     pos.push_back(p);
     
     ofVec2f v;
-    v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+    v.set(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5));
     vel.push_back(v);
+
+    lifeSpan.push_back(ofRandom(60, 120));
 }
 
 //--------------------------------------------------------------

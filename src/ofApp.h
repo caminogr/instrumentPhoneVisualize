@@ -29,4 +29,5 @@ public:
   ofTrueTypeFont ttf;
   vector<ofVec2f> pos;
   vector<ofVec2f> vel;
+  vector<int> lifeSpan;
 };

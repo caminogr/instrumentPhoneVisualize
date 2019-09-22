@@ -19,7 +19,6 @@ void ofApp::setup(){
 void ofApp::update(){
 
   for (int i = this->life_span.size() - 1; i >= 0; i--) {
-
     this->life_span[i] -= 1;
     if (life_span[i] == 0) {
       this->life_span.erase(this->life_span.begin() + i);
@@ -27,14 +26,14 @@ void ofApp::update(){
       this->vel.erase(this->vel.begin() + i);
       this->code_index_list.erase(this->code_index_list.begin() + i);
     }
+  }
 
-    for (int i=0; i<pos.size(); i++) {
-      pos[i] += vel[i];
-      if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
-      if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
-      if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
-      if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
-    }
+  for (int i=0; i<pos.size(); i++) {
+    pos[i] += vel[i];
+    if (pos[i].x > ofGetWidth()) {pos[i].x = 0;}
+    if (pos[i].x < 0) {pos[i].x = ofGetWidth();}
+    if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
+    if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
   }
 }
 

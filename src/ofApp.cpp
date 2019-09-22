@@ -17,7 +17,6 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
   for (int i = this->life_span.size() - 1; i >= 0; i--) {
     this->life_span[i] -= 1;
     if (life_span[i] == 0) {
@@ -50,11 +49,11 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
     ofVec2f p;
-    p.set(ofGetWidth()/2, ofGetHeight()/2);
+    p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
     pos.push_back(p);
     
     ofVec2f v;
-    v.set(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5));
+    v.set(ofRandom(-1, 1), ofRandom(-1, 1));
     vel.push_back(v);
     
     life_span.push_back(ofRandom(60, 120));

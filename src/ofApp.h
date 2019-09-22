@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include "font_code.h"
 
 #define PORT 8000
 #define NUM 40

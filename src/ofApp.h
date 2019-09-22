@@ -31,4 +31,5 @@ public:
   vector<ofVec2f> pos;
   vector<ofVec2f> vel;
   vector<int> lifeSpan;
+  vector<int> codeIndexList;
 };

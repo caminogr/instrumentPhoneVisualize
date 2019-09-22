@@ -25,6 +25,7 @@ void ofApp::update(){
       this->lifeSpan.erase(this->lifeSpan.begin() + i);
       this->pos.erase(this->pos.begin() + i);
       this->vel.erase(this->vel.begin() + i);
+      this->codeIndexList.erase(this->codeIndexList.begin() + i);
     }
 
     for (int i=0; i<pos.size(); i++) {
@@ -41,15 +42,14 @@ void ofApp::update(){
 void ofApp::draw(){
     ofSetColor(255);
     
-    char t[] = u8"\u3042";
     for (int i=0; i<pos.size(); i++) {
-        ttf.drawString(t, pos[i].x, pos[i].y);
+        ttf.drawString(font_code[codeIndexList[i]], pos[i].x, pos[i].y);
     }
 }
 
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    
     ofVec2f p;
     p.set(ofGetWidth()/2, ofGetHeight()/2);
     pos.push_back(p);
@@ -57,7 +57,8 @@ void ofApp::keyPressed(int key){
     ofVec2f v;
     v.set(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5));
     vel.push_back(v);
-
+    
+    codeIndexList.push_back(ofRandom(0, 3143));
     lifeSpan.push_back(ofRandom(60, 120));
 }
 

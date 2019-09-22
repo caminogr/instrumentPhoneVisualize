@@ -35,6 +35,14 @@ void ofApp::update(){
     if (pos[i].y > ofGetHeight()) {pos[i].y = 0;}
     if (pos[i].y < 0) {pos[i].y = ofGetHeight();}
   }
+
+  if (vel.size() > 0) {
+    if (rand() % 100 < 5) {
+      ofVec2f v;
+      v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+      vel[ofRandom(0, vel.size())] = v;
+    }
+  }
 }
 
 //--------------------------------------------------------------

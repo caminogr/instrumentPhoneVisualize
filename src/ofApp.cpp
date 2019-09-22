@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetFrameRate(60);
+    ofSetColor(255);
     ofBackground(0);
     
     // font
@@ -38,8 +39,6 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255);
-    
     for (int i=0; i<pos.size(); i++) {
         ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
     }

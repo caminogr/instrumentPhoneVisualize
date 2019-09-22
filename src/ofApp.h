@@ -30,6 +30,6 @@ public:
   ofTrueTypeFont ttf;
   vector<ofVec2f> pos;
   vector<ofVec2f> vel;
-  vector<int> lifeSpan;
-  vector<int> codeIndexList;
+  vector<int> life_span;
+  vector<int> code_index_list;
 };

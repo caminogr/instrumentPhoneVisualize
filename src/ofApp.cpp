@@ -18,14 +18,14 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
-  for (int i = this->lifeSpan.size() - 1; i >= 0; i--) {
+  for (int i = this->life_span.size() - 1; i >= 0; i--) {
 
-    this->lifeSpan[i] -= 1;
-    if (lifeSpan[i] == 0) {
-      this->lifeSpan.erase(this->lifeSpan.begin() + i);
+    this->life_span[i] -= 1;
+    if (life_span[i] == 0) {
+      this->life_span.erase(this->life_span.begin() + i);
       this->pos.erase(this->pos.begin() + i);
       this->vel.erase(this->vel.begin() + i);
-      this->codeIndexList.erase(this->codeIndexList.begin() + i);
+      this->code_index_list.erase(this->code_index_list.begin() + i);
     }
 
     for (int i=0; i<pos.size(); i++) {
@@ -43,7 +43,7 @@ void ofApp::draw(){
     ofSetColor(255);
     
     for (int i=0; i<pos.size(); i++) {
-        ttf.drawString(font_code[codeIndexList[i]], pos[i].x, pos[i].y);
+        ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
     }
 }
 
@@ -58,8 +58,8 @@ void ofApp::keyPressed(int key){
     v.set(ofRandom(-0.5, 0.5), ofRandom(-0.5, 0.5));
     vel.push_back(v);
     
-    codeIndexList.push_back(ofRandom(0, 3143));
-    lifeSpan.push_back(ofRandom(60, 120));
+    life_span.push_back(ofRandom(60, 120));
+    code_index_list.push_back(ofRandom(0, array_length(font_code)));
 }
 
 //--------------------------------------------------------------

@@ -32,4 +32,5 @@ public:
   vector<ofVec2f> vel;
   vector<int> life_span;
   vector<int> code_index_list;
+  bool vibrated;
 };

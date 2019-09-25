@@ -43,12 +43,33 @@ void ofApp::update(){
       vel[ofRandom(0, vel.size())] = v;
     }
   }
+
+  while( receiver.hasWaitingMessages() )
+  {
+    ofxOscMessage m;
+    receiver.getNextMessage( m );
+    int frequency;
+    if ( m.getAddress() == "/audio/start" ){
+
+      frequency = m.getArgAsInt32(0);
+        cout << "frequency: " << frequency << endl;
+        vibrated = true;
+    }
+    if ( m.getAddress() == "/audio/stop" ){
+        vibrated = false;
+    }
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    for (int i=0; i<pos.size(); i++) {
-        ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
+  for (int i=0; i<pos.size(); i++) {
+      ofPushMatrix();
+      if (vibrated) {
+        ofRotateDeg(ofRandom(0, 0.4), 0,0,1);
+      }
+      ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
+      ofPopMatrix();
     }
 }
 

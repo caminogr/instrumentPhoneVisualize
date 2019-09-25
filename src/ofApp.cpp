@@ -2,18 +2,18 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    ofSetFrameRate(60);
-    ofSetColor(255);
-    ofBackground(0);
-    
-    // font
-    ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
-    fontSettings.addRanges(ofAlphabet::Japanese);
-    ttf.load(fontSettings);
+  ofSetFrameRate(60);
+  ofSetColor(255);
+  ofBackground(0);
+  
+  // font
+  ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 24);
+  fontSettings.addRanges(ofAlphabet::Japanese);
+  ttf.load(fontSettings);
 
-    // osc
-    ofLog() << "listening for osc messages on port " << PORT;
-    receiver.setup(PORT);
+  // osc
+  ofLog() << "listening for osc messages on port " << PORT;
+  receiver.setup(PORT);
 }
 
 //--------------------------------------------------------------
@@ -50,13 +50,12 @@ void ofApp::update(){
     receiver.getNextMessage( m );
     int frequency;
     if ( m.getAddress() == "/audio/start" ){
-
       frequency = m.getArgAsInt32(0);
-        cout << "frequency: " << frequency << endl;
-        vibrated = true;
+      cout << "frequency: " << frequency << endl;
+      vibrated = true;
     }
     if ( m.getAddress() == "/audio/stop" ){
-        vibrated = false;
+      vibrated = false;
     }
   }
 }
@@ -64,38 +63,38 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
   for (int i=0; i<pos.size(); i++) {
-      ofPushMatrix();
-      if (vibrated) {
-        ofRotateDeg(ofRandom(0, 0.4), 0,0,1);
-      }
-      ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
-      ofPopMatrix();
+    ofPushMatrix();
+    if (vibrated) {
+      ofRotateDeg(ofRandom(0, 0.4), 0,0,1);
     }
+    ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
+    ofPopMatrix();
+  }
 }
 
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    ofVec2f p;
-    p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
-    pos.push_back(p);
-    
-    ofVec2f v;
-    v.set(ofRandom(-1, 1), ofRandom(-1, 1));
-    vel.push_back(v);
-    
-    life_span.push_back(ofRandom(60, 120));
-    code_index_list.push_back(ofRandom(0, array_length(font_code)));
+  ofVec2f p;
+  p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+  pos.push_back(p);
+  
+  ofVec2f v;
+  v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+  vel.push_back(v);
+  
+  life_span.push_back(ofRandom(1000, 1000000));
+  code_index_list.push_back(ofRandom(0, array_length(font_code)));
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-
+//  ofLog() << "mouseMoved";
+//  vibrated = true;
 }
 
 //--------------------------------------------------------------

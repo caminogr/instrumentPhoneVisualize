@@ -65,7 +65,12 @@ void ofApp::draw(){
   for (int i=0; i<pos.size(); i++) {
     ofPushMatrix();
     if (vibrated) {
-      ofRotateDeg(ofRandom(0, 0.4), 0,0,1);
+      ofRotateDeg(ofRandom(-0.3, 0.3), 0,0,1);
+      ofTranslate(ofGetWidth()/2, ofGetHeight());
+      ofRotateDeg(ofRandom(-0.3, 0.3), 0,0,1);
+      ofTranslate(ofGetWidth()/2, -ofGetHeight());
+      ofRotateDeg(ofRandom(-0.3, 0.3), 0,0,1);
+      ofTranslate(-ofGetWidth(), 0);
     }
     ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
     ofPopMatrix();

@@ -56,16 +56,16 @@ void ofApp::update(){
       vibrated = false;
     }
     if ( m.getAddress() == "/shake" ){
-       ofVec2f p;
-       p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
-       pos.push_back(p);
-       
-       ofVec2f v;
-       v.set(ofRandom(-1, 1), ofRandom(-1, 1));
-       vel.push_back(v);
-       
-       life_span.push_back(ofRandom(100, 1000));
-       code_index_list.push_back(ofRandom(0, array_length(font_code)));
+      ofVec2f p;
+      p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+      pos.push_back(p);
+      
+      ofVec2f v;
+      v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+      vel.push_back(v);
+      
+      life_span.push_back(ofRandom(100, 1000));
+      code_index_list.push_back(ofRandom(0, array_length(font_code)));
     }
   }
 }

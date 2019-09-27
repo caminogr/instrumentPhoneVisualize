@@ -18,13 +18,13 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-  for (int i = this->life_span.size() - 1; i >= 0; i--) {
-    this->life_span[i] -= 1;
+  for (int i = life_span.size() - 1; i >= 0; i--) {
+    life_span[i] -= 1;
     if (life_span[i] == 0) {
-      this->life_span.erase(this->life_span.begin() + i);
-      this->pos.erase(this->pos.begin() + i);
-      this->vel.erase(this->vel.begin() + i);
-      this->code_index_list.erase(this->code_index_list.begin() + i);
+      life_span.erase(life_span.begin() + i);
+      pos.erase(pos.begin() + i);
+      vel.erase(vel.begin() + i);
+      code_index_list.erase(code_index_list.begin() + i);
     }
   }
 

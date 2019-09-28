@@ -100,6 +100,11 @@ void ofApp::draw(){
   code_index_list.push_back(ofRandom(0, array_length(font_code)));
   }
 
+
+  if (ofRandom(0, 10000) <= 3) {
+    vibrated = !vibrated;
+  }
+
 }
 
 

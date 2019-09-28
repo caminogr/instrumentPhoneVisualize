@@ -48,25 +48,25 @@ void ofApp::update(){
   {
     ofxOscMessage m;
     receiver.getNextMessage( m );
-//    int frequency;
-//    if ( m.getAddress() == "/audio/start" ){
-//      vibrated = true;
-//    }
-//    if ( m.getAddress() == "/audio/stop" ){
-//      vibrated = false;
-//    }
-    // if ( m.getAddress() == "/shake" ){
-      // ofVec2f p;
-      // p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
-      // pos.push_back(p);
+   int frequency;
+   if ( m.getAddress() == "/audio/start" ){
+     vibrated = true;
+   }
+   if ( m.getAddress() == "/audio/stop" ){
+     vibrated = false;
+   }
+    if ( m.getAddress() == "/shake" ){
+      ofVec2f p;
+      p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+      pos.push_back(p);
 
-      // ofVec2f v;
-      // v.set(ofRandom(-1, 1), ofRandom(-1, 1));
-      // vel.push_back(v);
+      ofVec2f v;
+      v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+      vel.push_back(v);
 
-      // life_span.push_back(ofRandom(100, 1000));
-      // code_index_list.push_back(ofRandom(0, array_length(font_code)));
-    // }
+      life_span.push_back(ofRandom(100, 1000));
+      code_index_list.push_back(ofRandom(0, array_length(font_code)));
+    }
   }
 }
 
@@ -85,6 +85,21 @@ void ofApp::draw(){
     ttf.drawString(font_code[code_index_list[i]], pos[i].x, pos[i].y);
     ofPopMatrix();
   }
+
+
+  if (ofRandom(0, 4000) <= 3) {
+  ofVec2f p;
+  p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+  pos.push_back(p);
+  
+  ofVec2f v;
+  v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+  vel.push_back(v);
+  
+  life_span.push_back(ofRandom(100, 5000));
+  code_index_list.push_back(ofRandom(0, array_length(font_code)));
+  }
+
 }
 
 

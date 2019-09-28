@@ -7,7 +7,7 @@ void ofApp::setup(){
   ofBackground(0);
   
   // font
-  ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 36);
+  ofTrueTypeFontSettings fontSettings("NotoSansCJKjp-Regular.ttf", 48);
   fontSettings.addRanges(ofAlphabet::Japanese);
   ttf.load(fontSettings);
 

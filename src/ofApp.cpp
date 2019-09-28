@@ -48,25 +48,25 @@ void ofApp::update(){
   {
     ofxOscMessage m;
     receiver.getNextMessage( m );
-    int frequency;
-    if ( m.getAddress() == "/audio/start" ){
-      vibrated = true;
-    }
-    if ( m.getAddress() == "/audio/stop" ){
-      vibrated = false;
-    }
-    if ( m.getAddress() == "/shake" ){
-      ofVec2f p;
-      p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
-      pos.push_back(p);
-      
-      ofVec2f v;
-      v.set(ofRandom(-1, 1), ofRandom(-1, 1));
-      vel.push_back(v);
-      
-      life_span.push_back(ofRandom(100, 1000));
-      code_index_list.push_back(ofRandom(0, array_length(font_code)));
-    }
+//    int frequency;
+//    if ( m.getAddress() == "/audio/start" ){
+//      vibrated = true;
+//    }
+//    if ( m.getAddress() == "/audio/stop" ){
+//      vibrated = false;
+//    }
+    // if ( m.getAddress() == "/shake" ){
+      // ofVec2f p;
+      // p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+      // pos.push_back(p);
+
+      // ofVec2f v;
+      // v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+      // vel.push_back(v);
+
+      // life_span.push_back(ofRandom(100, 1000));
+      // code_index_list.push_back(ofRandom(0, array_length(font_code)));
+    // }
   }
 }
 
@@ -90,14 +90,30 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+  
+  ofVec2f p;
+  p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
+  pos.push_back(p);
+  
+  ofVec2f v;
+  v.set(ofRandom(-1, 1), ofRandom(-1, 1));
+  vel.push_back(v);
+  
+  life_span.push_back(ofRandom(100, 1000));
+  code_index_list.push_back(ofRandom(0, array_length(font_code)));
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+//  vibrated = !vibrated;
 }
+
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
+//    if ( m.getAddress() == "/audio/start" ){
+//      vibrated = true;
+//    }
 }
 
 //--------------------------------------------------------------
@@ -107,12 +123,15 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+//  vibrated = true;
+  vibrated = !vibrated;
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+  //    if ( m.getAddress() == "/audio/stop" ){
+//        vibrated = false;
+  //    }
 }
 
 //--------------------------------------------------------------

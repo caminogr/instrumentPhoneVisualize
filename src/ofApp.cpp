@@ -99,7 +99,7 @@ void ofApp::keyPressed(int key){
   v.set(ofRandom(-1, 1), ofRandom(-1, 1));
   vel.push_back(v);
   
-  life_span.push_back(ofRandom(100, 1000));
+  life_span.push_back(ofRandom(100, 10000));
   code_index_list.push_back(ofRandom(0, array_length(font_code)));
 }
 

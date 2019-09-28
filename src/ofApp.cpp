@@ -87,7 +87,7 @@ void ofApp::draw(){
   }
 
 
-  if (ofRandom(0, 4000) <= 3) {
+  if (ofRandom(0, 2000) <= 3) {
   ofVec2f p;
   p.set(ofRandom(0, ofGetWidth()), ofRandom(0,ofGetHeight()));
   pos.push_back(p);
